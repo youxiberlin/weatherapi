@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class List extends Component {
   render() {
     return (
-      <div>
-        List
-      </div>
+      <ul>
+        <li>{this.props.time}</li>
+        <li>{this.props.temp}</li>
+      </ul>
     );
   }
 }
