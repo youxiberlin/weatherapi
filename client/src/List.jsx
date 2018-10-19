@@ -6,6 +6,7 @@ class List extends Component {
       <ul>
         <li>{this.props.time}</li>
         <li>{this.props.temp}</li>
+        <li>{this.props.weather}</li>
       </ul>
     );
   }
