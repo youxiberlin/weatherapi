@@ -54,9 +54,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          header
+          You are now looking at the weather of {this.state.current.name}
         </header>
-        <p className="App-intro">{this.state.response}</p>
+        <div>
+          <h3>Current weather of {this.state.current.name}</h3>
+          <h4>Temprature: {this.state.current.main.temp}</h4>
+          <h4>Weather: {this.state.current.weather[0].main}</h4>
+          <h4>Humidity: {this.state.current.main.humidity}</h4>
+        </div>
         <div>{mappedList}</div>
       </div>
     );
