@@ -7,7 +7,6 @@ class List extends Component {
     let mm = today.getMonth() + 1;
     let date = mm + '-' + dd;
 
-    console.log('@List', this.props.data)
     const newArray = [];
     const data = this.props.data
     for (let i = 0; i < data.length; i++) {
@@ -24,17 +23,24 @@ class List extends Component {
     console.log('newArray', newArray)
 
     let sortedByDate = [];
+    for (let i = 0; i < 5; i++) {
+      sortedByDate.push([])
+    }
     for (let i = 0; i < newArray.length; i++) {
       if (newArray[i].date === date) {
-        sortedByDate.push(newArray[i])
+        sortedByDate[0].push(newArray[i])
       }
     }
 
+    const firstDayLength = sortedByDate[0].length;
+    const restArray = newArray.slice(firstDayLength, newArray.length)
+
+    sortedByDate[1].push(...restArray.slice(0, 8))
+    sortedByDate[2].push(...restArray.slice(8, 16))
+    sortedByDate[3].push(...restArray.slice(16, 24))
+    sortedByDate[4].push(...restArray.slice(24, 32))
+
     console.log('sortedByDate: ', sortedByDate)
-
-
-
-
 
     return (
       <div>data</div>
