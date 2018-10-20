@@ -47,7 +47,7 @@ class App extends Component {
       return <div className='spinner'>loading.....</div>
     }
 
-    console.log(this.state.current)
+    console.log(this.state.data.list)
 
     const mappedList = this.state.data.list.map((el, i) =>
       <List
@@ -71,10 +71,12 @@ class App extends Component {
     }
 
     let currentTemp = this.toCelcius(this.state.current.main.temp)
+    const test = 'test'
 
     return (
 
       <div className="App">
+        {test}
         <header className="App-header">
           {this.state.current.name}
           {weatherIcon}
