@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Item from './Item';
 
 class OtherDays extends Component {
   constructor(props) {
@@ -12,41 +13,34 @@ class OtherDays extends Component {
   componentDidMount() {
     const defaultDisplay = [];
     for (let i = 0; i < this.props.data.length; i++) {
-      defaultDisplay.push(i)
+      if (i % 2 === 0) {
+        defaultDisplay.push(this.props.data[i])
+      }
     }
     this.setState({ display: defaultDisplay, loading: false })
   }
 
   render() {
+    if (this.state.loading) {
+      return <div className='spinner'>loading.....</div>
+    }
 
     console.log('otherdays: this.state.display', this.state.display)
+    const mappedItem = this.state.display.map((el, i) =>
+      <Item
+        key={i}
+        date={el.date}
+        time={el.time}
+        temp={el.temp}
+        weather={el.weather}
+      />
+    )
+
 
     console.log('otherdays', this.props.data)
     return (
-      <div>
-        <h3>{this.props.data[0].date}</h3>
-        <div>
-          <div>
-            {this.props.data[0].time}
-            {this.props.data[0].temp}
-            {this.props.data[0].weather}
-          </div>
-          <div>
-            {this.props.data[2].time}
-            {this.props.data[2].temp}
-            {this.props.data[2].weather}
-          </div>
-          <div>
-            {this.props.data[4].time}
-            {this.props.data[4].temp}
-            {this.props.data[4].weather}
-          </div>
-          <div>
-            {this.props.data[6].time}
-            {this.props.data[6].temp}
-            {this.props.data[6].weather}
-          </div>
-        </div>
+      <div className='item-container'>
+        {mappedItem}
       </div>
     );
   }

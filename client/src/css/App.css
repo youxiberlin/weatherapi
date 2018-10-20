@@ -21,3 +21,14 @@
 .wi-lg {
   font-size: 3rem;
 }
+
+.item-container{
+  display: flex;
+  background: #eee;
+  justify-content: space-evenly;
+}
+
+.item{
+  /* margin: 0 3vw; */
+  /* border: red 1px solid; */
+}
