@@ -36,6 +36,12 @@ class App extends Component {
     return body;
   }
 
+  toCelcius = (num) => {
+    let result;
+    result = num - 273.15;
+    return result;
+  }
+
   render() {
     if (this.state.loading) {
       return <div className='spinner'>loading.....</div>
@@ -52,21 +58,28 @@ class App extends Component {
       />
     )
 
+    let weatherIcon;
+    if (!this.state.loading) {
+      const currentWeather = this.state.current.weather[0].main;
+      if (currentWeather === "Clear") {
+        weatherIcon = <i className="wi wi-day-sunny wi-lg"></i>
+      } else if (currentWeather === "Clouds") {
+        weatherIcon = <i className="wi wi-cloudy wi-lg"></i>
+      } else if (currentWeather === "Rain") {
+        weatherIcon = <i className="wi wi-rain wi-lg"></i>
+      }
+    }
+
+    let currentTemp = this.toCelcius(this.state.current.main.temp)
+
     return (
 
       <div className="App">
         <header className="App-header">
           {this.state.current.name}
-          <i className="wi wi-day-sunny sunny"></i>
-          <i className="wi wi-cloudy sunny"></i>
-          <i className="wi wi-rain sunny"></i>
+          {weatherIcon}
+          {currentTemp} &#8451;
         </header>
-        <div>
-          <h3>Current weather of {this.state.current.name}</h3>
-          <h4>Temprature: {this.state.current.main.temp}</h4>
-          <h4>Weather: {this.state.current.weather[0].main}</h4>
-          <h4>Humidity: {this.state.current.main.humidity}</h4>
-        </div>
         <div>{mappedList}</div>
       </div>
     );
