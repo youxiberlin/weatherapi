@@ -51,11 +51,11 @@ class App extends Component {
     if (!this.state.loading) {
       const currentWeather = this.state.current.weather[0].main;
       if (currentWeather === "Clear") {
-        weatherIcon = <i className="wi wi-day-sunny wi-lg"></i>
+        weatherIcon = <i className="wi wi-day-sunny"></i>
       } else if (currentWeather === "Clouds") {
-        weatherIcon = <i className="wi wi-cloudy wi-lg"></i>
+        weatherIcon = <i className="wi wi-cloudy"></i>
       } else if (currentWeather === "Rain") {
-        weatherIcon = <i className="wi wi-rain wi-lg"></i>
+        weatherIcon = <i className="wi wi-rain"></i>
       }
     }
 
@@ -65,9 +65,11 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          {this.state.current.name}
-          {weatherIcon}
-          {currentTemp} &#8451;
+          <h2>{this.state.current.name}</h2>
+          <div>
+            <p>{currentTemp}&#176;</p>
+            <p>{weatherIcon}</p>
+          </div>
         </header>
         <div>
           <List
