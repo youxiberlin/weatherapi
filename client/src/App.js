@@ -53,7 +53,7 @@ class App extends Component {
       <List
         key={i}
         time={el.dt_txt}
-        temp={el.main.temp}
+        temp={this.toCelcius(el.main.temp)}
         weather={el.weather[0].main}
       />
     )
