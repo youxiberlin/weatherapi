@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
-import './App.css';
+import './css/App.css';
+import './css/weather-icons.css';
 
 class App extends Component {
   state = {
@@ -52,9 +53,13 @@ class App extends Component {
     )
 
     return (
+
       <div className="App">
         <header className="App-header">
-          You are now looking at the weather of {this.state.current.name}
+          {this.state.current.name}
+          <i className="wi wi-day-sunny sunny"></i>
+          <i className="wi wi-cloudy sunny"></i>
+          <i className="wi wi-rain sunny"></i>
         </header>
         <div>
           <h3>Current weather of {this.state.current.name}</h3>
