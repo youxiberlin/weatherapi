@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Today from './Today';
+import OtherDays from './OtherDays';
 
 class List extends Component {
   render() {
@@ -20,7 +22,7 @@ class List extends Component {
         weather_more: data[i].weather[0].description
       })
     }
-    console.log('newArray', newArray)
+
 
     let sortedByDate = [];
     for (let i = 0; i < 5; i++) {
@@ -40,10 +42,15 @@ class List extends Component {
     sortedByDate[3].push(...restArray.slice(16, 24))
     sortedByDate[4].push(...restArray.slice(24, 32))
 
-    console.log('sortedByDate: ', sortedByDate)
 
     return (
-      <div>data</div>
+      <div>
+        <Today />
+        <OtherDays data={sortedByDate[1]} />
+        <OtherDays data={sortedByDate[2]} />
+        <OtherDays data={sortedByDate[3]} />
+        <OtherDays data={sortedByDate[4]} />
+      </div>
     );
   }
 }
