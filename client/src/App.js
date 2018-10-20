@@ -47,17 +47,6 @@ class App extends Component {
       return <div className='spinner'>loading.....</div>
     }
 
-    console.log(this.state.data.list)
-
-    const mappedList = this.state.data.list.map((el, i) =>
-      <List
-        key={i}
-        time={el.dt_txt}
-        temp={this.toCelcius(el.main.temp)}
-        weather={el.weather[0].main}
-      />
-    )
-
     let weatherIcon;
     if (!this.state.loading) {
       const currentWeather = this.state.current.weather[0].main;
@@ -70,19 +59,21 @@ class App extends Component {
       }
     }
 
-    let currentTemp = this.toCelcius(this.state.current.main.temp)
-    const test = 'test'
+    let currentTemp = Math.round(this.toCelcius(this.state.current.main.temp))
 
     return (
 
       <div className="App">
-        {test}
         <header className="App-header">
           {this.state.current.name}
           {weatherIcon}
           {currentTemp} &#8451;
         </header>
-        <div>{mappedList}</div>
+        <div>
+          <List
+            data={this.state.data.list}
+          />
+        </div>
       </div>
     );
   }
