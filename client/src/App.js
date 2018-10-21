@@ -38,21 +38,15 @@ class App extends Component {
     return body;
   }
 
-  toCelcius = (num) => {
-    let result;
-    result = num - 273.15;
-    return result;
-  }
-
   render() {
-    if (this.state.loading || this.setState.currentDataLoad) {
+    if (this.state.loading || this.state.currentDataLoad) {
       return <div className='spinner'>loading.....</div>
     }
-
 
     let headerBackground = {
       background: '#0d395d'
     }
+
 
     return (
       <div className="App">
