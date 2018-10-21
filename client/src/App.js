@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import './css/weather-icons.css';
-import Header from './Header';
+// import Header from './Header';
 
 class App extends Component {
   state = {
@@ -48,14 +48,13 @@ class App extends Component {
     }
 
     if (!this.state.loading && !this.state.currentDataLoad) {
-      console.log(this.state.loading, this.state.currentDataLoad)
       console.log(this.state.current, this.state.data)
       return (
         <div className="App">
           <header className="App-header" style={headerBackground}>
-            <Header
+            {/* <Header
               data={this.state.current}
-            />
+            /> */}
           </header>
           <main>
 
