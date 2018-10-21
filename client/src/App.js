@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import List from './List';
 import './css/App.css';
 import './css/weather-icons.css';
 
@@ -21,7 +20,6 @@ class App extends Component {
         this.setState({ current: res.data, currentDataLoad: false })
       })
       .catch(err => console.log(err));
-
   }
 
 
@@ -71,13 +69,6 @@ class App extends Component {
       background: '#0d395d'
     }
 
-    let listData;
-    if (!this.state.loading) {
-      listData = <List
-        data={this.state.data.list}
-      />
-    }
-
     return (
       <div className="App">
         <header className="App-header" style={headerBackground}>
@@ -88,7 +79,7 @@ class App extends Component {
           </div>
         </header>
         <main>
-          {listData}
+
         </main>
       </div>
     );
