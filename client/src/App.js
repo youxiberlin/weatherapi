@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import List from './List';
+import List from './List';
 import './css/App.css';
 import './css/weather-icons.css';
 
@@ -16,7 +16,7 @@ class App extends Component {
       .catch(err => console.log(err));
 
     this.callCurrentWeather()
-      .then(res => this.setState({ current: res.data, loading: false }))
+      .then(res => this.setState({ current: res.data }))
       .catch(err => console.log(err));
 
   }
@@ -79,9 +79,9 @@ class App extends Component {
           </div>
         </header>
         <main>
-          {/* <List
+          <List
             data={this.state.data.list}
-          /> */}
+          />
         </main>
       </div>
     );
