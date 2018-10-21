@@ -59,7 +59,7 @@ class App extends Component {
       }
     }
 
-    let currentTemp = Math.round(this.toCelcius(this.state.current.main.temp))
+    // let currentTemp = Math.round(this.toCelcius(this.state.current.main.temp))
 
     let headerBackground = {
       background: '#0d395d'
@@ -71,8 +71,9 @@ class App extends Component {
         <header className="App-header" style={headerBackground}>
           <h1>{this.state.current.name}</h1>
           <div>
-            <p>{currentTemp}&#176;</p>
+            {/* <p>{currentTemp}&#176;</p> */}
             <p>{weatherIcon}</p>
+            <p>{Math.round(this.toCelcius(this.state.current.main.temp))}</p>
           </div>
         </header>
         <main>
