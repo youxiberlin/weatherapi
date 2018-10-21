@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import List from './List';
+// import List from './List';
 import './css/App.css';
 import './css/weather-icons.css';
 
@@ -16,7 +16,7 @@ class App extends Component {
       .catch(err => console.log(err));
 
     this.callCurrentWeather()
-      .then(res => this.setState({ current: res.data }))
+      .then(res => this.setState({ current: res.data, loading: false }))
       .catch(err => console.log(err));
 
   }
@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     let weatherIcon;
-    if (this.state.loading) {
+    if (!this.state.loading) {
       const currentWeather = this.state.current.weather[0].main;
       if (currentWeather === "Clear") {
         weatherIcon = <i className="wi wi-day-sunny"></i>
@@ -59,7 +59,10 @@ class App extends Component {
       }
     }
 
-    // let currentTemp = Math.round(this.toCelcius(this.state.current.main.temp))
+    let currentTemp;
+    if (!this.state.loading) {
+      currentTemp = Math.round(this.toCelcius(this.state.current.main.temp));
+    }
 
     let headerBackground = {
       background: '#0d395d'
@@ -71,15 +74,14 @@ class App extends Component {
         <header className="App-header" style={headerBackground}>
           <h1>{this.state.current.name}</h1>
           <div>
-            {/* <p>{currentTemp}&#176;</p> */}
+            <p>{currentTemp}&#176;</p>
             <p>{weatherIcon}</p>
-            <p>{Math.round(this.toCelcius(this.state.current.main.temp))}</p>
           </div>
         </header>
         <main>
-          <List
+          {/* <List
             data={this.state.data.list}
-          />
+          /> */}
         </main>
       </div>
     );
