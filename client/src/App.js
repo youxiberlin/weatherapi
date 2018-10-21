@@ -49,6 +49,7 @@ class App extends Component {
 
     if (!this.state.loading && !this.state.currentDataLoad) {
       console.log(this.state.loading, this.state.currentDataLoad)
+      console.log(this.state.current, this.state.data)
       return (
         <div className="App">
           <header className="App-header" style={headerBackground}>
