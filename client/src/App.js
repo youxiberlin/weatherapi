@@ -52,7 +52,7 @@ class App extends Component {
 
     let weatherIcon;
     if (!this.state.currentDataLoad) {
-      const currentWeather = this.state.current.weather[0].main;
+      let currentWeather = this.state.current.weather[0].main;
       if (currentWeather === "Clear") {
         weatherIcon = <i className="wi wi-day-sunny"></i>
       } else if (currentWeather === "Clouds") {
@@ -71,6 +71,13 @@ class App extends Component {
       background: '#0d395d'
     }
 
+    let listData;
+    if (!this.state.loading) {
+      listData = <List
+        data={this.state.data.list}
+      />
+    }
+
     return (
       <div className="App">
         <header className="App-header" style={headerBackground}>
@@ -81,9 +88,10 @@ class App extends Component {
           </div>
         </header>
         <main>
-          <List
+          {/* <List
             data={this.state.data.list}
-          />
+          /> */}
+          {listData}
         </main>
       </div>
     );
