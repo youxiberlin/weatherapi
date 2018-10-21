@@ -8,6 +8,7 @@ class App extends Component {
     current: '',
     data: [],
     loading: true,
+    currentDataLoad: true,
   };
 
   componentDidMount() {
@@ -16,7 +17,9 @@ class App extends Component {
       .catch(err => console.log(err));
 
     this.callCurrentWeather()
-      .then(res => this.setState({ current: res.data }))
+      .then(res => {
+        this.setState({ current: res.data, currentDataLoad: false })
+      })
       .catch(err => console.log(err));
 
   }
@@ -43,12 +46,12 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.loading) {
+    if (this.state.loading || this.setState.currentDataLoad) {
       return <div className='spinner'>loading.....</div>
     }
 
     let weatherIcon;
-    if (!this.state.loading) {
+    if (!this.state.currentDataLoad) {
       const currentWeather = this.state.current.weather[0].main;
       if (currentWeather === "Clear") {
         weatherIcon = <i className="wi wi-day-sunny"></i>
@@ -60,7 +63,7 @@ class App extends Component {
     }
 
     let currentTemp;
-    if (!this.state.loading) {
+    if (!this.state.currentDataLoad) {
       currentTemp = Math.round(this.toCelcius(this.state.current.main.temp));
     }
 
@@ -69,7 +72,6 @@ class App extends Component {
     }
 
     return (
-
       <div className="App">
         <header className="App-header" style={headerBackground}>
           <h1>{this.state.current.name}</h1>
