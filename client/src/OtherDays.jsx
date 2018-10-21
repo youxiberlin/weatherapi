@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import { Button } from 'reactstrap';
 
 class OtherDays extends Component {
   constructor(props) {
@@ -8,6 +9,8 @@ class OtherDays extends Component {
       display: [],
       loading: true,
     }
+
+    this._loadDetail = this._loadDetail.bind(this)
   }
 
   componentDidMount() {
@@ -25,7 +28,6 @@ class OtherDays extends Component {
       return <div className='spinner'>loading.....</div>
     }
 
-    console.log('otherdays: this.state.display', this.state.display)
     const mappedItem = this.state.display.map((el, i) =>
       <Item
         key={i}
@@ -37,12 +39,24 @@ class OtherDays extends Component {
     )
 
 
-    console.log('otherdays', this.props.data)
+    console.log('onclicked', this.state.display)
     return (
-      <div className='item-container'>
-        {mappedItem}
+      <div>
+        <div className='item-container'>
+          {mappedItem}
+
+        </div>
+        <Button
+          onClick={this._loadDetail}
+        >more</Button>
       </div>
     );
+  }
+
+  _loadDetail() {
+    this.setState({
+      display: this.props.data
+    })
   }
 }
 

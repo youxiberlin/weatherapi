@@ -19,13 +19,13 @@
   
 }
 
-.App-header >h2 {
-  margin: 2vh;
+.App-header >h1 {
+  margin: 3vh;
 }
 
 .App-header > div > p {
   margin: 3vh 5vw;
-  font-size: 5rem;
+  font-size: 6rem;
 }
 
 
@@ -39,7 +39,10 @@
 
 .item-container{
   display: flex;
-  background: #eee;
   justify-content: space-evenly;
+}
+
+main {
+  background: rgba(238, 238, 238, .7);
 }
 

@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     let weatherIcon;
-    if (!this.state.loading) {
+    if (this.state.loading) {
       const currentWeather = this.state.current.weather[0].main;
       if (currentWeather === "Clear") {
         weatherIcon = <i className="wi wi-day-sunny"></i>
@@ -61,21 +61,25 @@ class App extends Component {
 
     let currentTemp = Math.round(this.toCelcius(this.state.current.main.temp))
 
+    let headerBackground = {
+      background: '#0d395d'
+    }
+
     return (
 
       <div className="App">
-        <header className="App-header">
-          <h2>{this.state.current.name}</h2>
+        <header className="App-header" style={headerBackground}>
+          <h1>{this.state.current.name}</h1>
           <div>
             <p>{currentTemp}&#176;</p>
             <p>{weatherIcon}</p>
           </div>
         </header>
-        <div>
+        <main>
           <List
             data={this.state.data.list}
           />
-        </div>
+        </main>
       </div>
     );
   }

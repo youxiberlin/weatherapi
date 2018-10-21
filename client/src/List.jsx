@@ -41,18 +41,17 @@ class List extends Component {
     sortedByDate[2].push(...restArray.slice(8, 16))
     sortedByDate[3].push(...restArray.slice(16, 24))
     sortedByDate[4].push(...restArray.slice(24, 32))
-    console.log('sortedByDate', sortedByDate)
 
     return (
       <div>
         <Today />
-        <h3>{sortedByDate[1][0].date}</h3>
+        <h2>{sortedByDate[1][0].date}</h2>
         <OtherDays data={sortedByDate[1]} />
-        <h3>{sortedByDate[2][0].date}</h3>
+        <h2>{sortedByDate[2][0].date}</h2>
         <OtherDays data={sortedByDate[2]} />
-        <h3>{sortedByDate[3][0].date}</h3>
+        <h2>{sortedByDate[3][0].date}</h2>
         <OtherDays data={sortedByDate[3]} />
-        <h3>{sortedByDate[4][0].date}</h3>
+        <h2>{sortedByDate[4][0].date}</h2>
         <OtherDays data={sortedByDate[4]} />
       </div>
     );
