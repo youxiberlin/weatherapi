@@ -88,9 +88,6 @@ class App extends Component {
           </div>
         </header>
         <main>
-          {/* <List
-            data={this.state.data.list}
-          /> */}
           {listData}
         </main>
       </div>

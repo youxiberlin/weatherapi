@@ -11,16 +11,18 @@ class List extends Component {
 
     const newArray = [];
     const data = this.props.data
-    for (let i = 0; i < data.length; i++) {
-      newArray.push({
-        date: data[i].dt_txt.split(' ')[0].slice(5, 10),
-        time: data[i].dt_txt.split(' ')[1].slice(0, 5),
-        temp: Math.round(data[i].main.temp - 273.15),
-        temp_max: Math.round(data[i].main.temp_max - 273.15),
-        temp_min: Math.round(data[i].main.temp_min - 273.15),
-        weather: data[i].weather[0].main,
-        weather_more: data[i].weather[0].description
-      })
+    if (this.props.data) {
+      for (let i = 0; i < data.length; i++) {
+        newArray.push({
+          date: data[i].dt_txt.split(' ')[0].slice(5, 10),
+          time: data[i].dt_txt.split(' ')[1].slice(0, 5),
+          temp: Math.round(data[i].main.temp - 273.15),
+          temp_max: Math.round(data[i].main.temp_max - 273.15),
+          temp_min: Math.round(data[i].main.temp_min - 273.15),
+          weather: data[i].weather[0].main,
+          weather_more: data[i].weather[0].description
+        })
+      }
     }
 
 
