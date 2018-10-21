@@ -47,19 +47,21 @@ class App extends Component {
       background: '#0d395d'
     }
 
+    if (!this.state.loading && !this.state.currentDataLoad) {
+      console.log(this.state.loading, this.state.currentDataLoad)
+      return (
+        <div className="App">
+          <header className="App-header" style={headerBackground}>
+            <Header
+              data={this.state.current}
+            />
+          </header>
+          <main>
 
-    return (
-      <div className="App">
-        <header className="App-header" style={headerBackground}>
-          <Header
-            data={this.state.current}
-          />
-        </header>
-        <main>
-
-        </main>
-      </div>
-    );
+          </main>
+        </div>
+      );
+    }
   }
 }
 
