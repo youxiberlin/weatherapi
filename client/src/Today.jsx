@@ -20,7 +20,6 @@ class Today extends Component {
         weather: data[i].weather
       })
     }
-    console.log('newData', newData)
 
     const mappedItem = newData.map((el, i) =>
       <Item

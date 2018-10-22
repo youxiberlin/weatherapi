@@ -48,13 +48,15 @@ class Others extends Component {
 
   render() {
 
-    console.log(this.props.data)
     const data = this.props.data;
-
+    console.log(this.props.data)
     const mappedItem = data.map((el, i) =>
       <OtherItem
         key={i}
         temp={el.temp}
+        time={el.time}
+        weather={el.weather}
+        weatherMore={el.weather_more}
       />
     )
 
@@ -68,7 +70,7 @@ class Others extends Component {
       marginRight: '.5em'
     }
 
-    console.log('this.state.detail', this.state.detail)
+
     let detailStyle;
     if (!this.state.detail) {
       detailStyle = {
@@ -76,7 +78,8 @@ class Others extends Component {
       }
     } else {
       detailStyle = {
-        display: 'block',
+        display: 'flex',
+        justifyContent: 'space-around',
       }
     }
 

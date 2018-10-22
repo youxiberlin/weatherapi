@@ -4,7 +4,10 @@ class OtherItem extends Component {
   render() {
     return (
       <div>
-        {this.props.temp}
+        <p><b>{this.props.time}</b></p>
+        <h1>{this.props.temp}</h1>
+        <p>{this.props.weather}</p>
+        <p>{this.props.weatherMore}</p>
       </div>
     );
   }
