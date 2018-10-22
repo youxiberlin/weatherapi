@@ -20,7 +20,6 @@ class List extends Component {
     let date = mm + '-' + dd;
     let day = today.getDay();
     let displayDays = this.listDays(day)
-    console.log('day: ', displayDays)
 
     const newArray = [];
     const data = this.props.data
@@ -52,8 +51,6 @@ class List extends Component {
 
     const firstDayLength = sortedByDate[0].length;
     const restArray = newArray.slice(firstDayLength, newArray.length)
-    console.log(restArray)
-
 
     sortedByDate[1].push(...restArray.slice(0, 8), displayDays[0])
     sortedByDate[2].push(...restArray.slice(8, 16), displayDays[1])

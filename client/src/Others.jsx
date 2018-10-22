@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import OtherItem from './OtherItem';
+import { Button } from 'reactstrap';
 
 class Others extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      detail: false,
+    }
+
+    this._showDetail = this._showDetail.bind(this)
+  }
+
   findMinMaxTemp(dayData) {
     const mappedData = dayData.map((el) =>
       el.temp
@@ -24,11 +34,23 @@ class Others extends Component {
     return result;
   }
 
+  _showDetail() {
+    if (!this.state.detail) {
+      this.setState({
+        detail: true,
+      })
+    } else {
+      this.setState({
+        detail: false,
+      })
+    }
+  }
 
   render() {
 
     console.log(this.props.data)
     const data = this.props.data;
+
     const mappedItem = data.map((el, i) =>
       <OtherItem
         key={i}
@@ -46,6 +68,17 @@ class Others extends Component {
       marginRight: '.5em'
     }
 
+    console.log('this.state.detail', this.state.detail)
+    let detailStyle;
+    if (!this.state.detail) {
+      detailStyle = {
+        display: 'none',
+      }
+    } else {
+      detailStyle = {
+        display: 'block',
+      }
+    }
 
     return (
       <div>
@@ -55,7 +88,10 @@ class Others extends Component {
           <h1 style={marginRight}>{minMax[1]}</h1>
           <h1 style={minStyle}>{minMax[0]}</h1>
         </div>
-        <div>
+        <Button
+          onClick={this._showDetail}
+        >more</Button>
+        <div style={detailStyle}>
           {mappedItem}
         </div>
       </div>
