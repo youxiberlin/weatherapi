@@ -12,7 +12,7 @@ class Today extends Component {
       weather: data[0].weather
     })
 
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 4; i++) {
       newData.push({
         date: data[i].date,
         time: data[i].time,

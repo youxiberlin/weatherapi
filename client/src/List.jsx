@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import Today from './Today';
-import OtherDays from './OtherDays';
+// import OtherDays from './OtherDays';
+import Others from './Others';
 
 class List extends Component {
+  listDays(day) {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+    let displayDays = [];
+    for (let i = day + 1; i < day + 5; i++) {
+      displayDays.push(days[i])
+    }
+    return displayDays;
+  }
+
   render() {
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth() + 1;
     let date = mm + '-' + dd;
+    let day = today.getDay();
+    let displayDays = this.listDays(day)
+    console.log('day: ', displayDays)
 
     const newArray = [];
     const data = this.props.data
@@ -26,6 +39,7 @@ class List extends Component {
     }
 
 
+
     let sortedByDate = [];
     for (let i = 0; i < 5; i++) {
       sortedByDate.push([])
@@ -38,27 +52,27 @@ class List extends Component {
 
     const firstDayLength = sortedByDate[0].length;
     const restArray = newArray.slice(firstDayLength, newArray.length)
+    console.log(restArray)
 
-    sortedByDate[1].push(...restArray.slice(0, 8))
-    sortedByDate[2].push(...restArray.slice(8, 16))
-    sortedByDate[3].push(...restArray.slice(16, 24))
-    sortedByDate[4].push(...restArray.slice(24, 32))
+
+    sortedByDate[1].push(...restArray.slice(0, 8), displayDays[0])
+    sortedByDate[2].push(...restArray.slice(8, 16), displayDays[1])
+    sortedByDate[3].push(...restArray.slice(16, 24), displayDays[2])
+    sortedByDate[4].push(...restArray.slice(24, 32), displayDays[3])
 
     let todayData = sortedByDate[0].concat(sortedByDate[1])
+
+
 
     return (
       <div>
         <Today
           data={todayData}
         />
-        <h2>{sortedByDate[1][0].date}</h2>
-        <OtherDays data={sortedByDate[1]} />
-        <h2>{sortedByDate[2][0].date}</h2>
-        <OtherDays data={sortedByDate[2]} />
-        <h2>{sortedByDate[3][0].date}</h2>
-        <OtherDays data={sortedByDate[3]} />
-        <h2>{sortedByDate[4][0].date}</h2>
-        <OtherDays data={sortedByDate[4]} />
+        <Others data={sortedByDate[1]} />
+        <Others data={sortedByDate[2]} />
+        <Others data={sortedByDate[3]} />
+        <Others data={sortedByDate[4]} />
       </div>
     );
   }
