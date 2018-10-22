@@ -38,13 +38,10 @@ class OtherDays extends Component {
       />
     )
 
-
-    console.log('onclicked', this.state.display)
     return (
       <div>
         <div className='item-container'>
           {mappedItem}
-
         </div>
         <Button
           onClick={this._loadDetail}

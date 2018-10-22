@@ -44,9 +44,13 @@ class List extends Component {
     sortedByDate[3].push(...restArray.slice(16, 24))
     sortedByDate[4].push(...restArray.slice(24, 32))
 
+    let todayData = sortedByDate[0].concat(sortedByDate[1])
+
     return (
       <div>
-        <Today />
+        <Today
+          data={todayData}
+        />
         <h2>{sortedByDate[1][0].date}</h2>
         <OtherDays data={sortedByDate[1]} />
         <h2>{sortedByDate[2][0].date}</h2>

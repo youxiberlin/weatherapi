@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
+
 
 class Header extends Component {
   render() {
-    console.log('Header', this.props.data)
     let data = this.props.data;
     let temp = Math.round(this.toCelcius(data.main.temp));
     let currentWeather = data.weather[0].main;
@@ -15,12 +16,27 @@ class Header extends Component {
       weatherIcon = <i className="wi wi-rain"></i>
     }
 
+
+    const Header = styled.section`
+    padding: 2em;
+    background: #333;
+    color: white;
+  `;
+
+    const HeaderItem = styled.div`
+    font-size: 5rem;
+    display: flex;
+    justify-content:center;
+  `;
+
     return (
-      <div>
+      <Header>
         <h1>{data.name}</h1>
-        <h1>{temp}</h1>
-        <h1>{weatherIcon}</h1>
-      </div>
+        <HeaderItem>
+          <p style={{ marginRight: '1em' }}>{temp}</p>
+          <p>{weatherIcon}</p>
+        </HeaderItem>
+      </Header>
     );
   }
 
