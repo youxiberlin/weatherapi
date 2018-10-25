@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Today from './Today';
-// import OtherDays from './OtherDays';
 import Others from './Others';
 
 class List extends Component {

@@ -34,6 +34,24 @@ class Others extends Component {
     return result;
   }
 
+  findDaysWeather(dayData) {
+    const mappedData = dayData.map((el) =>
+      el.weather
+    )
+    let counts = {};
+    mappedData.forEach(x => { counts[x] = (counts[x] || 0) + 1; });
+
+    const res = [];
+    for (let prop in counts) {
+      if (counts[prop] > 3) {
+        res.push(prop)
+      } else if (counts[prop] > 2) {
+        res.push(prop)
+      }
+    }
+    return res;
+  }
+
   _showDetail() {
     if (!this.state.detail) {
       this.setState({
@@ -62,6 +80,7 @@ class Others extends Component {
     )
 
     const minMax = this.findMinMaxTemp(data);
+    const dayWeather = this.findDaysWeather(data);
 
     const minStyle = {
       color: '#bbb',
@@ -88,6 +107,7 @@ class Others extends Component {
       <div>
         <div className="d-flex container">
           <h1 style={marginRight}>{data[0].date}</h1>
+          <h1>{dayWeather}</h1>
           <h1 style={marginRight}>{data[data.length - 1]}</h1>
           <h1 style={marginRight}>{minMax[1]}</h1>
           <h1 style={minStyle}>{minMax[0]}</h1>
