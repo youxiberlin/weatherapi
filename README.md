@@ -1,6 +1,6 @@
 # Weather API 
 
-Published on : [bertechmeetup.herokuapp.com](https://weather-berlin.herokuapp.com/)
+Published on : [weather-berlin.herokuapp.com](https://weather-berlin.herokuapp.com/)
 
 
 ### Technologies used
