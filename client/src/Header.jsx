@@ -33,7 +33,7 @@ class Header extends Component {
       <Header>
         <h1>{data.name}</h1>
         <HeaderItem>
-          <p style={{ marginRight: '1em' }}>{temp}</p>
+          <p style={{ marginRight: '1em' }}>{temp}&#176;</p>
           <p>{weatherIcon}</p>
         </HeaderItem>
       </Header>

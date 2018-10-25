@@ -49,8 +49,9 @@ class Others extends Component {
   render() {
 
     const data = this.props.data;
-    console.log(this.props.data)
-    const mappedItem = data.map((el, i) =>
+    console.log(data)
+    const weatherData = data.slice(0, 8)
+    const mappedItem = weatherData.map((el, i) =>
       <OtherItem
         key={i}
         temp={el.temp}

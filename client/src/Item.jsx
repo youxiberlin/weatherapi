@@ -16,7 +16,7 @@ class Item extends Component {
     return (
       <div className='item'>
         <p><b>{this.props.time}</b></p>
-        <h1>{this.props.temp}</h1>
+        <h1>{this.props.temp}&#176;</h1>
         <p>{weatherIcon}</p>
       </div>
     );
