@@ -35,13 +35,13 @@ class Others extends Component {
   }
 
   findDaysWeather(dayData) {
-    const mappedData = dayData.map((el) =>
-      el.weather
-    )
     let counts = {};
-    mappedData.forEach(x => { counts[x] = (counts[x] || 0) + 1; });
-
     const res = [];
+
+    dayData.map((el) =>
+      el.weather
+    ).forEach(x => { counts[x] = (counts[x] || 0) + 1; });
+
     for (let prop in counts) {
       if (counts[prop] > 3) {
         res.push(prop)
