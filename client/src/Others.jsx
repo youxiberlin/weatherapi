@@ -122,8 +122,8 @@ class Others extends Component {
           <h1 style={marginRight}>{data[0].date}</h1>
           <h1 style={marginRight}>{data[data.length - 1]}</h1>
           <h1>{dayWeatherTag}</h1>
-          <h1 style={marginRight}>{minMax[1]}</h1>
-          <h1 style={minStyle}>{minMax[0]}</h1>
+          <h1 style={marginRight}>{minMax[1]}&#176;</h1>
+          <h1 style={minStyle}>{minMax[0]}&#176;</h1>
         </div>
         <Button
           onClick={this._showDetail}
