@@ -52,6 +52,19 @@ class Others extends Component {
     return res;
   }
 
+  makeWeatherIcon(dayWeather) {
+    let weTag;
+    let weItem = dayWeather.map(el =>
+      el.toLowerCase().replace(/clouds/, "cloudy").replace(/clear/, "day-sunny"))
+
+    if (weItem.length === 1) {
+      weTag = <i className={`wi wi-${weItem[0]} wi-lg`}></i>
+    } else if (weItem.length === 2) {
+      weTag = <div><i className={`wi wi-${weItem[0]} wi-lg`}></i><i className={`wi wi-${weItem[1]} wi-lg`}></i></div>
+    }
+    return weTag;
+  }
+
   _showDetail() {
     if (!this.state.detail) {
       this.setState({
@@ -65,7 +78,6 @@ class Others extends Component {
   }
 
   render() {
-
     const data = this.props.data;
     console.log(data)
     const weatherData = data.slice(0, 8)
@@ -79,8 +91,9 @@ class Others extends Component {
       />
     )
 
-    const minMax = this.findMinMaxTemp(data);
-    const dayWeather = this.findDaysWeather(data);
+    const minMax = this.findMinMaxTemp(weatherData);
+    const dayWeather = this.findDaysWeather(weatherData);
+    let dayWeatherTag = this.makeWeatherIcon(dayWeather);
 
     const minStyle = {
       color: '#bbb',
@@ -107,8 +120,8 @@ class Others extends Component {
       <div>
         <div className="d-flex container">
           <h1 style={marginRight}>{data[0].date}</h1>
-          <h1>{dayWeather}</h1>
           <h1 style={marginRight}>{data[data.length - 1]}</h1>
+          <h1>{dayWeatherTag}</h1>
           <h1 style={marginRight}>{minMax[1]}</h1>
           <h1 style={minStyle}>{minMax[0]}</h1>
         </div>
